@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Параметризация</title>
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+</head>
+<body>
+    <div>
+        <h2>Введите параметры запроса</h2>
+        <form action="" method="post">
+            {% if params['category'] %}
+                <label for="category">Категория</label>
+                <input type ="text" name="category" id="category">
+                <br><br>
+            {% endif %}
+            {% if params['country'] %}
+                <label for="country">Страна</label>
+                <input type="text" name="country" id="country">
+                <br><br>
+            {% endif %}
+            {% if params['price'] %}
+                <label for="price">Цена</label>
+                <input type="number" name="price" id="price">
+                <br><br>
+            {% endif %}
+            <button type="submit">Искать</button>
+            <button type="reset">Очистить</button>
+        </form>
+        <p>{{ error }}</p>
+        <form action="/query">
+            <button>Меню запросов</button>
+        </form>
+        <form action="/">
+            <button>Домой</button>
+        </form>
+    </div>
+</body>
+</html>

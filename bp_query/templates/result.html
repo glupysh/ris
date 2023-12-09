@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Результат</title>
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+</head>
+
+<body>
+    <div>
+        {% if flag %}
+            <h2>{{ title }}</h2>
+            <table border="1" align="center">
+                <thead>
+                    <tr>
+                        {% for key in data[0].keys() %}
+                        <th>{{ key }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                {% for dict in data %}
+                <tr>
+                    {% for value in dict.values() %}
+                    <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <h2>Информация не найдена</h2>
+        {% endif %}
+        <form action="/query">
+            <button>Меню запросов</button>
+        </form>
+        <form action="/">
+            <button>Домой</button>
+        </form>
+    </div>
+</body>
+
+</html>

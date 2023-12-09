@@ -1,0 +1,1 @@
+INSERT purchase VALUES(NULL, $user_id, $total_price, CURDATE())

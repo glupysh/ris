@@ -1,0 +1,29 @@
+{% extends 'basket_base.html' %}
+{% import 'basket_utils.html' as utils %}
+{% block content %}
+
+<div class="card container col-8 p-5" style="margin-top: 40px; width: 40rem; height: 40rem">
+    <h2 class="text-center">Заказ {{ id_purchase }} успешно создан</h2>
+    <ul class="list-group mt-3" style="height: 100%; overflow-y: auto">
+        {% for item in items %}
+        <li class="list-group-item justify-content-between lh-sm">
+            <div>
+                <h6 class="my-0">{{ item['product_name'] }}</h6>
+                <small class="text-muted">Категория: {{ item['category'] }}</small>
+                <small class="text-muted">Страна: {{ item['country'] }}</small>
+                <small class="text-muted">Количество: {{ item['amount'] }}</small>
+            </div>
+            <span class="text-muted">{{ item['amount'] * item['price'] }} ₽</span>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="list-group-item d-flex justify-content-between">
+        <span>Всего:</span>
+        <strong>{{ total_price }} ₽</strong>
+    </div>
+    <a href="{{ url_for('bp_order.basket_index') }}" class="btn btn-primary mt-3">
+        В каталог
+    </a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ошибка доступа</title>
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+</head>
+<body id="accessBody">
+    <div>
+        <h1>{{ error[1] }}</h1>
+    {% if error[0] %}
+        <form action="/">
+            <button>Домой</button>
+        </form>
+    {% else %}
+        <form action="/auth">
+            <button>Войти</button>
+        </form>
+    {% endif %}
+    </div>
+</body>

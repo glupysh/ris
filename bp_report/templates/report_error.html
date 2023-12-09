@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ошибка</title>
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+</head>
+
+<body>
+    <div>
+        <h2>{{ msg }}</h2>
+              <form action="/report">
+            <button>Меню отчётов</button>
+        </form>
+      <form action="/">
+            <button>Домой</button>
+        </form>
+    </div>
+</body>

@@ -1,0 +1,1 @@
+SELECT * FROM rep_external JOIN period USING (id_period) WHERE period_year = $year AND period_month = $month

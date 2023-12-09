@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+</head>
+
+<body id="homeBody">
+    <div>
+        <h1>Добро пожаловать в наш магазин!</h1>
+        {% if group == 'admin' %}
+        <p><a href="/query">Перейти в меню запросов</a></p>
+        <p><a href="/report">Перейти в меню отчётов</a></p>
+        <p><a href="/order">Сделать заказ</a></p>
+        {% endif %}
+        {% if group == 'director' %}
+        <p><a href="/report">Перейти в меню отчётов</a></p>
+        {% endif %}
+        {% if group == 'manager' %}
+        <p><a href="/query">Перейти в меню запросов</a></p>
+        <p><a href="/report">Перейти в меню отчётов</a></p>
+        {% endif %}
+        {% if group == 'buyer' %}
+        <p><a href="/order">Сделать заказ</a></p>
+        {% endif %}
+        <p><a href="/auth/logout">Выйти из системы</a></p>
+    </div>
+</body>
+
+</html>

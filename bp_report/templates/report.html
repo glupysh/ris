@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Отчёты</title>
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+</head>
+
+<body>
+    <div>
+        <h2>Выберите нужный отчёт</h2>
+        <p style="color: red">{{ msg }}</p>
+        {% for report in report_list %}
+        <form action="" method="post" style="margin-top: 20px">
+          <p><label for="rep_name">{{ report['rep_name'] }}</label></p>
+          <label for="month">Месяц</label>
+          <input type ="number" name="month" id="month">
+          <br><br>
+          <label for="year">Год</label>
+          <input type ="number" name="year" id="year">
+          <br><br>
+          <input type="submit" id="rep_name" name="send" value="Посмотреть">
+          {% if group == 'admin' or group == 'manager' %}
+          <input type="submit" name="send" value="Создать">
+          {% endif %}
+          <br><br>
+          <input type="hidden" name="rep_name" value="{{ report['rep_name'] }}">
+          <input type="hidden" name="sql_name" value="{{ report['sql_name'] }}">
+          <input type="hidden" name="proc_name" value="{{ report['proc_name'] }}">
+        </form>
+        {% endfor %}
+        <form action="/">
+            <button>Домой</button>
+        </form>
+    </div>
+</body>
+</html>

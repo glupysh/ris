@@ -1,0 +1,51 @@
+{% extends 'basket_base.html' %}
+{% import 'basket_utils.html' as utils %}
+{% block content %}
+
+<div class="card container col-8 p-5" style="margin-top: 40px; height: 40rem">
+    <div class="row" style="height: 100%">
+        <div class="col-md-7" style="height: 100%">
+            <h2 class="fw-bold mb-0 text-black">Список товаров</h2>
+            <div class="mt-3 scroll-area" style="height: 90%; overflow-y: auto">
+            {% if items %}
+                {% for item in items %}
+                    {{ utils.render_item(item, show_form=True) }}
+                {% endfor %}
+            {% else %}
+                <p>Нет доступных товаров</p>
+            {% endif %}
+            </div>
+        </div>
+        <div class="col-md-5" style="height: 100%">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="fw-bold mb-0 text-black">Корзина</h2>
+                <h6 class="mb-0 text-muted">
+                  {{ basket | length }} товар{% if basket | length > 1 and basket | length < 5 %}а{% elif basket | length != 1 %}ов{% endif %}
+                </h6>
+                <a href="{{ url_for('bp_order.clear_basket' )}}" style="color: #9f9f9f"><i class="fa fa-trash-o"></i></a>
+            </div>
+            <div class="mt-3 scroll-area" style="height: 80%; overflow-y: auto">
+                {% if basket %}
+                    {% for key in basket %}
+                        {{ utils.render_item(basket[key]) }}
+                    {% endfor %}
+                {% else %}
+                <p>Ваша корзина пуста</p>
+                {% endif %}
+            </div>
+            <div class="col-md-12">
+                <a href="{{ url_for('bp_order.save_order') }}" class="col-12 btn btn-success btn-block btn-lg">
+                    <span>Оформить <i class="fa fa-long-arrow-right ms-2"></i></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="{{ url_for('home') }}" class="btn btn-light position-absolute bottom-0 end-0">
+    <svg width="50" height="50" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M109.576 219.151C169.995 219.151 219.149 169.995 219.149 109.575C219.149 49.156 169.995 0 109.576 0C49.157 0 0.00201416 49.156 0.00201416 109.575C0.00201416 169.995 49.157 219.151 109.576 219.151ZM109.576 15C161.724 15 204.149 57.426 204.15 109.575C204.15 161.724 161.725 204.15 109.576 204.151C57.428 204.15 15.003 161.724 15.003 109.574C15.003 57.427 57.428 15 109.576 15Z" fill="black"/>
+        <path d="M94.861 156.507C97.79 159.435 102.539 159.434 105.467 156.507C108.397 153.577 108.397 148.829 105.466 145.899L76.646 117.08L160.103 117.072C164.245 117.071 167.602 113.714 167.602 109.57C167.601 105.428 164.244 102.072 160.102 102.072L76.642 102.08L105.469 73.2552C108.398 70.3262 108.398 65.5762 105.469 62.6482C104.004 61.1842 102.085 60.4512 100.165 60.4512C98.246 60.4512 96.327 61.1842 94.862 62.6472L53.233 104.275C51.826 105.681 51.036 107.588 51.036 109.578C51.037 111.568 51.827 113.474 53.234 114.883L94.861 156.507Z" fill="black"/>
+    </svg>
+</a>
+
+{% endblock %}

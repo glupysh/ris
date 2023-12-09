@@ -1,0 +1,1 @@
+UPDATE product SET available_quantity = available_quantity - $amount WHERE id_product = $id_product

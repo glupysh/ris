@@ -1,0 +1,1 @@
+INSERT purchase_detail VALUES (NULL, $id_purchase, $id_product, $amount)

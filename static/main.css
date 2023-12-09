@@ -1,0 +1,33 @@
+#homeBody { background-image: url('supermarket.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: Luminari;
+            color: #008080; }
+
+#accessBody { background-image: url('access.jpg');
+              background-repeat: no-repeat;
+              background-size: cover;
+              font-family: Luminari;
+              color: #008080; }
+
+body { font-family: Luminari;
+       color: #008080; }
+
+div { text-align: center; }
+
+label { display: inline-block;
+        width: 150px; }
+
+button, input[name="send"] { font-family: Luminari;
+         font-size: 100%;
+         background: #DCDCDC;
+         color: #008080;
+         border-radius: 8px;
+         width: 140px;
+         height: 40px; }
+
+
+
+
+
+
